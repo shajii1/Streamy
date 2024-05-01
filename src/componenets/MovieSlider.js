@@ -8,9 +8,8 @@ const Container = styled.div`
   position: relative;
   padding: 1rem 0;
   h1 {
-    margin-left: 5px;
-    font-size: 25px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin-left: 25px;
+    font-size: 22px;
     color: white;
   }
   .wrapper {

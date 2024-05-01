@@ -105,7 +105,7 @@ const HeroContainer = styled.div`
         display: flex;
         align-items: center;
         justify-content: center;
-        color: red;
+        color: #23013f;
         border-radius: 1rem;
         font-size: 1.4rem;
         gap: 1rem;

@@ -23,7 +23,7 @@ const SignUpPage = () => {
   };
 
   onAuthStateChanged(firebaseAuth, (currentUser) => {
-    if (currentUser) navigate('/');
+    if (currentUser) navigate('/login');
   });
 
   return (
@@ -127,8 +127,8 @@ const Container = styled.div`
           width: 30rem;
           padding: 0.5rem 1rem;
           font-size: 1rem;
-          background-color: #333;
-          color: white;
+          background-color: white;
+          color: black;
           border: none;
           border-radius: 0.2rem;
           outline: none;
@@ -137,7 +137,8 @@ const Container = styled.div`
         button {
           height: 3rem;
           width: 30rem;
-          background-color: #e50914;
+          background-color:#23013f ;
+          box-shadow: 0 0 0.2rem white; /* Adjust the size of the shadow as needed */
           color: white;
           font-size: 1.2rem;
           font-weight: 600;

@@ -27,10 +27,10 @@ const TopNav = ({ isScrolled }) => {
         <div className="leftSide">
           <div className="logo">
             <img
-              src="https://www.shutterstock.com/image-illustration/amd-logo-font-on-dark-260nw-2368094755.jpg"
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxe5_DpdoGNWA_rw6QX3UuSm6DLKrp7HbMhBHsPMO707MOAAp8wHy7T-tM9OzNW02gTyA&usqp=CAU"
               alt="logo"
             />
-             <span className="company-name">Streamy</span>
+             <span className="company-name">Stream</span>
          </div>
           <ul className="links">
             {navlinks.map(({ name, link }) => {
@@ -59,12 +59,12 @@ const NavContainer = styled.div`
   }
   .scrolled{
     display: flex;
-    background-color: black;
+    background-color: rgba(0,0,0,0.5);
   }
   nav{
     position: sticky;
     top: 0;
-    height: 6rem;
+    height: 5rem;
     width: 100%;
     justify-content: space-between;
     position: fixed;
@@ -84,9 +84,9 @@ const NavContainer = styled.div`
     align-items: center;
    }
    img{
-    margin-left: -40px;
+    margin-left: -50px;
     width: 5rem;
-    height: 3rem;
+    height: 3.5rem;
    }
    div{
 
@@ -114,7 +114,7 @@ const NavContainer = styled.div`
     gap: 1rem;
     margin-right: 1rem;
     button{
-        background-color: red;
+        background-color: #23013f;
         border: none;
         cursor: pointer;
         border-radius: 50%;
@@ -128,7 +128,11 @@ const NavContainer = styled.div`
 .company-name {
   font-size: 28px; /* Adjust the font size as needed */
   font-weight: bold; /* Make the text bold if desired */
-  color: #e94c42; 
+  color: #23013f; /* Dark violet color */
+  text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5), 
+             -1px -1px 0 rgba(255, 255, 255, 0.5), 
+              1px -1px 0 rgba(255, 255, 255, 0.5), 
+             -1px 1px 0 rgba(255, 255, 255, 0.5);
   margin-left:7px;/* Adjust the color as needed */
 }
 `;
