@@ -9,9 +9,9 @@ import { onAuthStateChanged, signOut } from "firebase/auth";
 const TopNav = ({ isScrolled }) => {
   const navlinks = [
     { name: "Home", link: "/" },
-    { name: "Tv Show", link: "/tv" },
-    { name: "My List", link: "/mylist" },
-    { name: "Movies", link: "/movies" },
+    { name: "Tv Show"},
+    { name: "My List"},
+    { name: "Movies"},
   ];
 
 
