@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+/*import React, { useState } from 'react';
 import styled from 'styled-components';
 import { createUserWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
 import { firebaseAuth } from '../utils/firebase-config';
@@ -25,6 +25,37 @@ const SignUpPage = () => {
   onAuthStateChanged(firebaseAuth, (currentUser) => {
     if (currentUser) navigate('/login');
   });
+  */
+  import React, { useState, useEffect } from 'react';
+  import styled from 'styled-components';
+  import { createUserWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
+  import { firebaseAuth } from '../utils/firebase-config';
+  import { useNavigate } from 'react-router-dom';
+  import BackgroundImage from '../componenets/BackgroundImage'
+  import Header from '../componenets/Header'
+  
+  const SignUpPage = () => {
+    const [showPassword, setShowPassword] = useState(false);
+    const [formValues, setFormValues] = useState({ email: '', password: '' });
+    const navigate = useNavigate();
+  
+    useEffect(() => {
+      const unsubscribe = onAuthStateChanged(firebaseAuth, (currentUser) => {
+        if (currentUser) {
+          navigate('/login');
+        }
+      });
+      return () => unsubscribe();
+    }, [navigate]);
+  
+    const handleSignIn = async () => {
+      try {
+        const { email, password } = formValues;
+        await createUserWithEmailAndPassword(firebaseAuth, email, password);
+      } catch (error) {
+        console.log(error);
+      }
+    };
 
   return (
     <Container showPassword={showPassword}>
@@ -85,7 +116,6 @@ const Container = styled.div`
     position: absolute;
     top: 0;
     left: 0;
-    background-color: rgba(0, 0, 0, 0.79);
     height: 100vh;
     width: 100vw;
     grid-template-columns: 15vh 85vh;
@@ -103,6 +133,7 @@ const Container = styled.div`
 
         h1 {
           font-size: 3rem;
+          color:white;
         }
 
         h4 {
@@ -148,7 +179,7 @@ const Container = styled.div`
           transition: 0.3s ease-in-out;
 
           &:hover {
-            background-color: #ff0a16;
+            background-color: #000000;
           }
         }
       }

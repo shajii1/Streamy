@@ -34,7 +34,9 @@ const Netflix = () => {
     return () => (window.onscroll = null);
   };
 
-  // console.log(movies)
+  console.log(movies)
+  console.log(generesLoaded)
+
 
   return (
     <HeroContainer>

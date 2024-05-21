@@ -95,16 +95,21 @@ const NavContainer = styled.div`
    
   }
  
-  .links{
+  .links {
     display: flex;
     list-style-type: none;
     gap: 3rem;
-    li{
-        a{
-            color: white;
-            text-decoration: none;
+    li {
+      a {
+        color: white;
+        text-decoration: none;
+        font-size: 1.5rem; /* Increase the font size */
+        cursor: pointer; /* Change cursor to pointer */
+        &:hover {
+          text-decoration: underline;
+          color: violet; /* Change color to violet */
         }
-    }
+      }
   }
 }
 
