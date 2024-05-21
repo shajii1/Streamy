@@ -97,13 +97,16 @@ const NavContainer = styled.div`
  
   .links {
     display: flex;
+    margin-top:12px;
+
     list-style-type: none;
     gap: 3rem;
     li {
       a {
+        font-family: 'Roboto', sans-serif; /* Google Font */
         color: white;
         text-decoration: none;
-        font-size: 1.5rem; /* Increase the font size */
+        font-size: 1.3rem; /* Increase the font size */
         cursor: pointer; /* Change cursor to pointer */
         &:hover {
           text-decoration: underline;
