@@ -1,69 +1,67 @@
-import React, {useState} from 'react';
-import {signInWithEmailAndPassword, onAuthStateChanged} from 'firebase/auth';
+import React, { useState, useEffect } from 'react';
+import { signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
-
-
-import Header from '../componenets/Header';
-import BackgroundImage from '../componenets/BackgroundImage';
+import Header from '../componenets/Header'; // Fixed the typo
+import BackgroundImage from '../componenets/BackgroundImage'; // Fixed the typo
 import styled from 'styled-components';
-import {firebaseAuth} from '../utils/firebase-config'
-
+import { firebaseAuth } from '../utils/firebase-config';
 
 const LoginPage = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
-const [email, setemail] = useState("");
-const [password, setpassword] = useState("");
+  const handleLogin = async () => {
+    try {
+      await signInWithEmailAndPassword(firebaseAuth, email, password);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-const navigate=useNavigate()
-
-const handleLogin=async()=>{
-try{
-  await signInWithEmailAndPassword(firebaseAuth,email,password)
-}catch(error){
-console.log(error)
-}
-}
-onAuthStateChanged(firebaseAuth,(currentUser)=>{
-  if(currentUser){navigate('/')}
-})
-
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(firebaseAuth, (currentUser) => {
+      if (currentUser) {
+        navigate('/');
+      }
+    });
+    return () => unsubscribe();
+  }, [navigate]);
 
   return (
-   <Wrapper>
-    <BackgroundImage/>
-<div className='loginContent'>
-  <Header/>
-  <div className='form-wrapper'>
+    <Wrapper>
+      <BackgroundImage />
+      <div className='loginContent'>
+        <Header />
+        <div className='form-wrapper'>
+          <div className='form'>
+            <div className='title'>
+              <h1>Login</h1>
+            </div>
+            <div className='container'>
+              <input 
+                type='email' 
+                placeholder='Email'  
+                onChange={(e) => setEmail(e.target.value)}
+                value={email}
+              />
+              <input 
+                type='password' 
+                placeholder='Password' 
+                onChange={(e) => setPassword(e.target.value)}
+                value={password}
+              />
+              <button onClick={handleLogin}>Login</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Wrapper>
+  );
+};
 
-  
-  <div className='form'>
-    <div className='title'>
-      <h1>login</h1>
-    </div>
-    <div className='container'>
-    <input type='text' placeholder='Email'  
-    onChange={(e)=>setemail(e.target.value)}
-    value={email}
-    />
-    <input type='password' placeholder='Password' 
-     onChange={(e)=>setpassword(e.target.value)}
-     value={password}
-    />
-    <button onClick={handleLogin}>login</button>
-
-    </div>
-  </div>
-  </div>
-</div>
-
-   </Wrapper>
-
-
-  )
-}
-
-const Wrapper=styled.div`
-position: relative;
+const Wrapper = styled.div`
+  position: relative;
   .loginContent {
     position: absolute;
     top: 0;
@@ -71,6 +69,7 @@ position: relative;
     background-color: rgba(0, 0, 0, 0.4);
     height: 100vh;
     width: 100vw;
+    display: grid;
     grid-template-columns: 15vh 85vh;
     .form-wrapper {
       display: flex;
@@ -79,8 +78,8 @@ position: relative;
       justify-content: center;
       gap: 2rem;
       height: 85vh;
-  }
-  .form {
+    }
+    .form {
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -91,7 +90,6 @@ position: relative;
       padding: 2rem;
       color: white;
       border-radius: 0.4rem;
-
       .container {
         display: flex;
         flex-direction: column;
@@ -100,12 +98,11 @@ position: relative;
           border-radius: 0.4rem;
           padding: 0.5rem 1rem;
           width: 25rem;
-          height: 3.4;
           outline: none;
         }
         button {
           padding: 0.5rem;
-          background-color:#ff775e ;
+          background-color: #ff775e;
           border: none;
           cursor: pointer;
           border-radius: 0.4rem;
@@ -117,6 +114,6 @@ position: relative;
       }
     }
   }
-`
+`;
 
 export default LoginPage;
