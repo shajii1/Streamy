@@ -7,10 +7,10 @@ const Header = (props) => {
   return (
    <HeaderContainer>
      <div className='logo'>
-    <img src="https://www.shutterstock.com/image-illustration/amd-logo-font-on-dark-260nw-2368094755.jpg"
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxe5_DpdoGNWA_rw6QX3UuSm6DLKrp7HbMhBHsPMO707MOAAp8wHy7T-tM9OzNW02gTyA&usqp=CAU"
       alt='no internet connection'
       />
-      <span className='company'>Streamy</span>
+      <span className='company'>Stream</span>
      </div>
      <button onClick={()=>navigate(props.login ? '/login' : '/signup')}>
       {props.login ? 'Log In ' : 'Sign In'}
@@ -30,10 +30,11 @@ const HeaderContainer = styled.div`
     align-items: center;
    }
    img{
-    margin-left: -10px;
+    margin-left: 10px;
     width: 5rem;
-    height: 3rem;
-   
+    height: 3.5rem;
+    box-shadow: 0 0 0.2rem white; /* Adjust the size of the shadow as needed */
+
     }
     button{
       padding: 0.5rem 1rem;
@@ -49,7 +50,11 @@ const HeaderContainer = styled.div`
     .company {
   font-size: 28px; /* Adjust the font size as needed */
   font-weight: bold; /* Make the text bold if desired */
-  color: #e94c42; 
+  color: #23013f; /* Dark violet color */
+  text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5), 
+             -1px -1px 0 rgba(255, 255, 255, 0.5), 
+              1px -1px 0 rgba(255, 255, 255, 0.5), 
+             -1px 1px 0 rgba(255, 255, 255, 0.5);
   margin-left:15px;/* Adjust the color as needed */
 }
 `
